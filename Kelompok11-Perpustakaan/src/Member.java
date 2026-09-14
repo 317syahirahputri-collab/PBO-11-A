@@ -5,8 +5,6 @@ public class Member {
     private String idMember;
     private String nama;
     private String email;
-
-    // Menyimpan daftar buku yang dipinjam member
     private ArrayList<Buku> daftarBukuDipinjam;
 
     // Constructor
@@ -17,7 +15,7 @@ public class Member {
         this.daftarBukuDipinjam = new ArrayList<>();
     }
 
-    // Getter
+    // Getter (Diperlukan agar subclass dapat mengakses nilainya)
     public String getIdMember() {
         return idMember;
     }
@@ -30,61 +28,46 @@ public class Member {
         return email;
     }
 
+    public ArrayList<Buku> getDaftarBukuDipinjam() {
+        return daftarBukuDipinjam;
+    }
+
     // Method meminjam buku
     public void pinjamBuku(Buku buku) {
-
         if (buku != null && buku.pinjamBuku()) {
             daftarBukuDipinjam.add(buku);
-
-            System.out.println(
-                nama + " berhasil meminjam buku \"" +
-                buku.getJudul() + "\"."
-            );
-
+            System.out.println(nama + " berhasil meminjam buku \"" + buku.getJudul() + "\".");
         } else {
-            System.out.println(
-                "Buku \"" + (buku != null ? buku.getJudul() : "") +
-                "\" tidak tersedia."
-            );
+            System.out.println("Buku \"" + (buku != null ? buku.getJudul() : "") + "\" tidak tersedia.");
         }
     }
 
     // Method mengembalikan buku
     public void kembalikanBuku(Buku buku) {
-
         if (buku != null && daftarBukuDipinjam.remove(buku)) {
             buku.kembalikanBuku();
-
-            System.out.println(
-                nama + " mengembalikan buku \"" +
-                buku.getJudul() + "\"."
-            );
-
+            System.out.println(nama + " mengembalikan buku \"" + buku.getJudul() + "\".");
         } else {
-
-            System.out.println(
-                "Buku tersebut tidak sedang dipinjam oleh " +
-                nama + "."
-            );
+            System.out.println("Buku tersebut tidak sedang dipinjam oleh " + nama + ".");
         }
     }
 
     // Menampilkan informasi member
     public void tampilkanInfo() {
-
         System.out.println("ID Member : " + idMember);
         System.out.println("Nama      : " + nama);
         System.out.println("Email     : " + email);
+        tampilkanBukuDipinjam();
+    }
 
+    // Helper method untuk menampilkan buku
+    protected void tampilkanBukuDipinjam() {
         System.out.println("Buku yang dipinjam:");
-
         if (daftarBukuDipinjam.isEmpty()) {
             System.out.println("- Tidak ada buku yang dipinjam");
         } else {
             for (Buku buku : daftarBukuDipinjam) {
-                System.out.println(
-                    "- " + buku.getJudul()
-                );
+                System.out.println("- " + buku.getJudul());
             }
         }
     }
