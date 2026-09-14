@@ -150,5 +150,36 @@ public class Main {
         System.out.println("=================================");
 
         member1.tampilkanInfo();
+
+        // ==========================================
+        // PENGUJIAN INHERITANCE (MEMBER VIP)
+        // ==========================================
+
+        System.out.println("\n=================================");
+        System.out.println("    PENGUJIAN MEMBER VIP (INHERITANCE)");
+        System.out.println("=================================");
+
+        
+        MemberVIP memberVIP1 = new MemberVIP(
+            "VIP001",
+            "Bunga",
+            "bunga@gmail.com",
+            0.20
+        );
+
+        
+        memberVIP1.tampilkanInfo();
+
+        System.out.println("---------------------------------");
+
+        memberVIP1.pinjamBuku(buku3);
+
+        memberVIP1.tambahPoin(50);
+
+        System.out.println("---------------------------------");
+
+        System.out.println("Data Member VIP setelah transaksi:");
+        memberVIP1.tampilkanInfo();
+        
     }
 }
