@@ -55,7 +55,7 @@ public class Main {
         // MEMBUAT OBJEK MEMBER
         // ==========================================
 
-        Member member1 = new Member(
+        MemberReguler member1 = new MemberReguler(
             "M001",
             "Syahirah",
             "syahirah@gmail.com"
@@ -181,5 +181,20 @@ public class Main {
         System.out.println("Data Member VIP setelah transaksi:");
         memberVIP1.tampilkanInfo();
         
+
+        // ==========================================
+        // (Abstract Class Member + Interface Tampilkan/Peminjam)
+        // ==========================================
+
+        System.out.println("\n=================================");
+        System.out.println("    DEMONSTRASI POLIMORFISME");
+        System.out.println("=================================");
+
+        Member[] daftarMember = { member1, memberVIP1 };
+
+        for (Member m : daftarMember) {
+            m.tampilkanInfo();
+            System.out.println("---------------------------------");
+        }
     }
 }
