@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Member {
+public abstract class Member implements Peminjam, Tampilkan {
 
     private String idMember;
     private String nama;
@@ -33,6 +33,7 @@ public class Member {
     }
 
     // Method meminjam buku
+    @Override 
     public void pinjamBuku(Buku buku) {
         if (buku != null && buku.pinjamBuku()) {
             daftarBukuDipinjam.add(buku);
@@ -43,6 +44,7 @@ public class Member {
     }
 
     // Method mengembalikan buku
+    @Override 
     public void kembalikanBuku(Buku buku) {
         if (buku != null && daftarBukuDipinjam.remove(buku)) {
             buku.kembalikanBuku();
@@ -51,16 +53,10 @@ public class Member {
             System.out.println("Buku tersebut tidak sedang dipinjam oleh " + nama + ".");
         }
     }
+    @Override 
+    public abstract void tampilkanInfo();
 
-    // Menampilkan informasi member
-    public void tampilkanInfo() {
-        System.out.println("ID Member : " + idMember);
-        System.out.println("Nama      : " + nama);
-        System.out.println("Email     : " + email);
-        tampilkanBukuDipinjam();
-    }
-
-    // Helper method untuk menampilkan buku
+    //Menampilkan buku, dipakai bersama oleh semua subclass
     protected void tampilkanBukuDipinjam() {
         System.out.println("Buku yang dipinjam:");
         if (daftarBukuDipinjam.isEmpty()) {
