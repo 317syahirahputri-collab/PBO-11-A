@@ -1,4 +1,4 @@
-public class GenreBuku {
+public class GenreBuku implements Tampilkan {
 
     private String idGenre;
     private String namaGenre;
@@ -24,6 +24,7 @@ public class GenreBuku {
     }
 
     // Menampilkan informasi genre
+    @Override 
     public void tampilkanInfo() {
         System.out.println("ID Genre   : " + idGenre);
         System.out.println("Nama Genre : " + namaGenre);
