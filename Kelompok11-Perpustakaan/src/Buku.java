@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Buku {
+public class Buku implements Tampilkan{
 
     private String idBuku;
     private String judul;
@@ -63,6 +63,7 @@ public class Buku {
     }
 
     // Menampilkan informasi buku
+    @Override 
     public void tampilkanInfo() {
         System.out.println("ID Buku      : " + idBuku);
         System.out.println("Judul        : " + judul);
